@@ -12,7 +12,7 @@ const Home = () => {
 		if (window.innerWidth < 768)
 			screenScale = [50, 50, 50];
 		else
-			screenScale = [30, 30, 30];
+			screenScale = [20, 20, 20];
 		return [ screenScale, screenPosition, rotation];
 	}
 	const [ knightScale, knightPosition , knightrotation] = adjustKnightForScreenSize();
@@ -29,11 +29,9 @@ const Home = () => {
 		>
 			<Suspense fallback={<Loader />}>
 				<directionalLight position= {[1,1,1]} intensity={1}/>
-				<ambientLight />
-				<pointLight />
-				<spotLight />
-				<hemisphereLight />
-
+				<ambientLight intensity={1}/>
+				<hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1}/>
+ 
 				<Knight 
 					position={knightPosition}
 					scale={knightScale}
