@@ -1,0 +1,19 @@
+cd ../../../c/Users/qwaze/Documents/code
+
+vite:
+	https://v2.vitejs.dev/guide/#scaffolding-your-first-vite-project
+	npm create vite@latest ./
+	npm install
+	npm run dev
+
+	https://tailwindcss.com/docs/guides/vite
+	npm install -D tailwindcss postcss autoprefixer
+	npx tailwindcss init -p
+
+	npm install @react-three/fiber
+	npm install @react-spring/three
+	
+	
+	npm install react-router-dom
+
+	https://gist.githubusercontent.com/adrianhajdin/7bc0603ee0b1bd2872b80a62c24b5e5f/raw/f841db3c5a565bee14dd388781008af52a783bfc/index.css
