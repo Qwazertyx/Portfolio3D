@@ -1,4 +1,4 @@
-cd ../../../c/Users/qwaze/Documents/code
+cd ../../../c/Users/qwaze/Documents/code/
 
 vite:
 	https://v2.vitejs.dev/guide/#scaffolding-your-first-vite-project
