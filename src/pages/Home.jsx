@@ -11,7 +11,7 @@ import HomeInfo from '../components/HomeInfo'
 const Home = () => {
 
 	const [isRotating, setIsRotating] = useState(false);
-	const [curretStage, setCurrentStage] = useState(1);
+	const [currentStage, setCurrentStage] = useState(1);
 
 	const adjustKnightForScreenSize = () => {
 		let screenScale = null;
@@ -42,7 +42,7 @@ const Home = () => {
   return (
 	<section className='w-full h-screen relative bg-gray-950 '>
 		<div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-			{curretStage && <HomeInfo curretStage={curretStage}/>}
+			{currentStage && <HomeInfo currentStage={currentStage}/>}
 		</div>
 
 

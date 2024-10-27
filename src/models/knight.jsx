@@ -22,7 +22,7 @@ const Knight = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 
 	const lastX = useRef(0);
 	const rotationSpeed = useRef(0);
-	const dampingFactor = 0.95;
+	const dampingFactor = 0.80;
 
 	/* e for event 
 	security *2 + rotate*/
@@ -47,10 +47,10 @@ const Knight = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 		if(isRotating){
 			const clientX = e.touches ? e.touches[0].clientX : e.clientX;
 			const delta = (clientX - lastX.current) / viewport.width;
-			knightRef.current.rotation.y += delta * Math.PI * 0.05;
+			knightRef.current.rotation.y += delta * Math.PI * 0.01;
 	
 			lastX.current = clientX;
-			rotationSpeed.current = delta * Math.PI * 0.05;
+			rotationSpeed.current = delta * Math.PI * 0.01;
 		}
 
 	}
@@ -58,11 +58,11 @@ const Knight = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 	const handleKeyDown = (e) => {
 		if(e.key === 'ArrowLeft'){
 			if (!isRotating) setIsRotating(true);
-				knightRef.current.rotation.y += Math.PI * 0.05;
+				knightRef.current.rotation.y += Math.PI * 0.01;
 		}
 		else if(e.key === 'ArrowRight'){
 			if (!isRotating) setIsRotating(true);
-				knightRef.current.rotation.y -= Math.PI * 0.05;
+				knightRef.current.rotation.y -= Math.PI * 0.01;
 		}
 	}
 
