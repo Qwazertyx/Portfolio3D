@@ -6,6 +6,7 @@ import Sky from '../models/Sky'
 import Allay from '../models/allay'
 import Bee from '../models/bee'
 import HomeInfo from '../components/HomeInfo'
+import McIsland from '../models/mcisland'
 
 
 const Home = () => {
@@ -25,15 +26,32 @@ const Home = () => {
 	}
 	const [ knightScale, knightPosition , knightrotation] = adjustKnightForScreenSize();
 
+	const adjustMcIslandForScreenSize = () => {
+		let screenScale = null;
+		let screenPosition = null;
+		let rotation = [0, 0, 0];
+		if (window.innerWidth < 768){
+			screenPosition = [0, -18, -50];
+			screenScale = [300, 300, 300];
+		}
+		else{
+			screenPosition = [0, -25, -50];
+			screenScale = [500, 500, 500];
+		}
+		return [screenScale, screenPosition, rotation];
+	  }
+	  
+	  const [mcIslandScale, mcIslandPosition, mcIslandRotation] = adjustMcIslandForScreenSize();
+	
 	const adjustBeeForScreenSize = () => {
 		let screenScale, screenPosition;
 		if (window.innerWidth < 768){
 			screenScale = [1, 1, 1];
-			screenPosition = [0, -0.2, 3];
+			screenPosition = [0, -0.3, 3];
 		}
 		else{
-			screenScale = [1.1, 1.1, 1.1];
-			screenPosition = [0, 0, 4];
+			screenScale = [0.8, 0.8, 0.8];
+			screenPosition = [0, -0.1, 4];
 		}
 		return [ screenScale, screenPosition];
 	}
@@ -43,6 +61,7 @@ const Home = () => {
 	<section className='w-full h-screen relative bg-gray-950 '>
 		<div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
 			{currentStage && <HomeInfo currentStage={currentStage}/>}
+			{console.log('Current Stage:', currentStage)}
 		</div>
 
 
@@ -56,10 +75,18 @@ const Home = () => {
 				<hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1}/>
 				<Allay/>
 				<Sky isRotating={setIsRotating}/>
-				<Knight 
+				{/*<Knight 
 					position={knightPosition}
 					scale={knightScale}
 					rotation={knightrotation}
+					isRotating={isRotating}
+					setIsRotating={setIsRotating}
+					setCurrentStage={setCurrentStage}
+				/>*/}
+				<McIsland
+					scale={mcIslandScale}
+					position={mcIslandPosition}
+					rotation={mcIslandRotation}
 					isRotating={isRotating}
 					setIsRotating={setIsRotating}
 					setCurrentStage={setCurrentStage}

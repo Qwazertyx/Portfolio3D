@@ -18,10 +18,10 @@ const allay = () => {
 		if (allayRef.current) {
 		allayRef.current.position.y = Math.sin(clock.elapsedTime) * 0.4 + 2;
 
-		if (allayRef.current.position.x > camera.position.x + 5) {
+		if (allayRef.current.position.x > camera.position.x + 10) {
 			allayRef.current.rotation.y = Math.PI;
 		}
-		else if (allayRef.current.position.x < camera.position.x - 5) {
+		else if (allayRef.current.position.x < camera.position.x - 10) {
 			allayRef.current.rotation.y = 0;
 		}
 
@@ -37,7 +37,7 @@ const allay = () => {
 	})
 
   return (
-	<mesh position={[-2, 1, 1]} scale={[0.3, 0.3, 0.3]} ref={allayRef}>
+	<mesh position={[-1, 1, 1]} scale={[0.2, 0.2, 0.2]} ref={allayRef}>
 		<primitive object={scene} />
 	</mesh>
   )
