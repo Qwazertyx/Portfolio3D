@@ -43,20 +43,22 @@ const McIsland = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 		if(isRotating){
 			const clientX = e.touches ? e.touches[0].clientX : e.clientX;
 			const delta = (clientX - lastX.current) / viewport.width;
-			mcislandRef.current.rotation.y += delta * Math.PI * 0.01;
+			mcislandRef.current.rotation.y += delta * Math.PI * 0.005;
 	
 			lastX.current = clientX;
-			rotationSpeed.current = delta * Math.PI * 0.01;
+			rotationSpeed.current = delta * Math.PI * 0.005;
 		}
 	}
 	const handleKeyDown = (e) => {
 		if(e.key === 'ArrowLeft'){
 			if (!isRotating) setIsRotating(true);
-				mcislandRef.current.rotation.y += Math.PI * 0.05;
+				mcislandRef.current.rotation.y += Math.PI * 0.01;
+				rotationSpeed.current = 0.0125;
 		}
 		else if(e.key === 'ArrowRight'){
 			if (!isRotating) setIsRotating(true);
-				mcislandRef.current.rotation.y -= Math.PI * 0.05;
+				mcislandRef.current.rotation.y -= Math.PI * 0.01;
+				rotationSpeed.current = -0.0125;
 		}
 	}
 

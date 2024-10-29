@@ -26,8 +26,20 @@ import arrow from './arrow.svg'
 import contact from './contact.svg'
 import soundon from './soundon.png'
 import soundoff from './soundoff.png'
+import c from './c.png'
+import cpp from './cpp.svg'
+import python from './python.png'
+import fortytwo from './fortytwo.svg'
+import ALTEN from './ALTEN.jpg'
+import school from './school.svg'
 
 export {
+	c,
+	cpp,
+	python,
+	fortytwo,
+	ALTEN,
+	school,
     css,
     express,
     git,

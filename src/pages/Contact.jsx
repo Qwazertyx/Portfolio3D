@@ -1,11 +1,45 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
 
+	const formRef = useRef(null);
 	const [form, setForm] = useState({ name: '', email: '', message: '' });
 	const [isloading, setIsLoading] = useState(false);
 
-	const handleChange = () => {}
+	const handleChange = (e) => {
+		setForm({ ...form, [e.target.name]: e.target.value });
+	}
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setIsLoading(true);
+
+		console.log('Service ID:', import.meta.env.VITE_APP_EMAILJS_SERVICE_ID);
+		console.log('Template ID:', import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID);
+		console.log('Public Key:', import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY);
+
+		emailjs.send(
+			import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+			import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+			{
+				from_name: form.name,
+				to_name: 'qwazz',
+				from_email: form.email,
+				to_email: 'qwazertyx84@gmail.com',
+				message: form.message
+			},
+			import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+		).then(() => {
+			setIsLoading(false);
+			//success
+			//hide alert
+			setForm({ name: '', email: '', message: '' });
+			alert('Message sent successfully')
+		}).catch((error) => {
+			setIsLoading(false);
+			alert('An error occured, please try again')
+		})
+	}
 	const handleFocus = () => {}
 	const handleBlur = () => {}
 
@@ -15,7 +49,10 @@ const Contact = () => {
 			<h1 className='head-text'>
 				Get in Touch
 			</h1>
-			<form className='flex flex-col w-full gap-7 mt-14'>
+			<form className='flex flex-col w-full gap-7 mt-14'
+				onSubmit={handleSubmit}
+			>
+
 				<label className='text-black-500 font-semibold'>
 					Name
 					<input
@@ -46,12 +83,11 @@ const Contact = () => {
 				</label>
 				<label className='text-black-500 font-semibold'>
 					Your Message
-					<input
-						type='message'
+					<textarea
+						name='message'
 						rows={4}
 						className='textarea'
 						placeholder='Let me know how i can help you'
-						required
 						value={form.message}
 						onChange={handleChange}
 						onFocus={handleFocus}
@@ -63,8 +99,9 @@ const Contact = () => {
 					className='btn'
 					onFocus={handleFocus}
 					onBlur={handleBlur}
-
-				></button>
+				>
+					{isloading ? 'Sending...' : 'Send Message'}
+				</button>
 			</form>
 		</div>
 	</section>
