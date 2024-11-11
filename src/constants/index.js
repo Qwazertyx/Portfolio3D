@@ -171,7 +171,7 @@ export const projects = [
         iconUrl: estate,
         theme: 'btn-back-blue',
         name: 'Pear2PearWeb',
-        description: 'Web application for wallet management in apredictive marketing project',
+        description: 'Web application for wallet management in a predictive marketing project (this project is private).',
         link: 'https://github.com/Qwazertyx/Pear2PearWeb',
     },
     {
